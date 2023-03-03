@@ -5,7 +5,6 @@ const JWT = require('jsonwebtoken');
 
 router.post('/register', async (req, res) => {
     const checkEmail = await User.findOne({ email: req.body.email })
-    console.log(req.body)
     if (!checkEmail) {
         const salt = bcrypt.genSaltSync(10);
         const hashedPassword = bcrypt.hashSync(req.body.password, salt);
